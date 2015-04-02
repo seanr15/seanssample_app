@@ -11,7 +11,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/new'
   end
-  
+
   test "valid signup information" do
     get signup_path
     assert_difference 'User.count', 1 do
@@ -21,5 +21,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             password_confirmation: "password" }
     end
     assert_template 'users/show'
+    assert is_logged_in?
   end
 end
